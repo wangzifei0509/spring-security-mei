@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>标准登录页</title>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+</head>
+<body>
+<h1>标准登录页</h1>
+<h4>表单登录</h4>
+<form action="/authen/image" method="post">
+    <table>
+        <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="text" name="password"/></td>
+        </tr>
+        <tr>
+            <td>图片验证码</td>
+            <td><input type="text" name="imageCode"/></td>
+            <td><img src="/code/image"/></td>
+        </tr>
+        <tr>
+            <td colspan='2'><input name="remember-me" type="checkbox" value="true"/>记住我</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">登录</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<h4>手机号登录</h4>
+<form action="/authen/sms" method="post">
+    <table>
+        <tr>
+            <td>手机号</td>
+            <td><input id="mobile" type="text" name="mobile" value="1307856343"/></td>
+        </tr>
+        <tr>
+            <td>验证码</td>
+            <td><input  type="text" name="smsCode"/></td>
+            <td><a onclick="sendCode()" style="color: -webkit-link;cursor: pointer;text-decoration: underline;">发送验证码</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">登录</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<a href="/check/weixin">微信登录</a>
+</body>
+<script type="text/javascript">
+
+function sendCode(){
+var mobile = $("#mobile").val();
+var url = "/code/sms?mobile=" + mobile;
+$.get(url,function(result){
+    alert("sucess");
+});
+}
+</script>
+</html>
